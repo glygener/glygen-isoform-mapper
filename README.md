@@ -1,12 +1,12 @@
 The isoform-mapper tool is used to map protein sequence position on UniProtKB isoform sequences to corrsponding canonical 
 siform sequence by performing global pairwise alignment.
 
-###Step-1: pull image from docker hub
+### Step-1: pull image from docker hub
 ```
 docker pull glygen/isoform-mapper:1.0.0
 ```
 
-###Step-2: set up your data folder
+### Step-2: set up your data folder
 Choose path to your data directory (for example DATA_DIR="/path/to/data/directory/") and run the following commands to create subdirectories
 
 ```
@@ -16,7 +16,7 @@ $ mkdir -p $DATA_DIR/logs
 $ mkdir -p $DATA_DIR/output
 ```
 
-###Step-3: place fasta files under $DATA_DIR/db
+### Step-3: place fasta files under $DATA_DIR/db
 You can use the following commands to download isoform sequences for different proteomes 
 ```
 $ wget https://data.glygen.org/ln2data/releases/data/current/reviewed/human_protein_allsequences.fasta -O $DATA_DIR/db/human_protein_allsequences.fasta
@@ -43,7 +43,7 @@ GVRKEQGGGCHSDT
 
 ```
 
-###Step-4: create example input file and place fasta files under $DATA_DIR/input_examples/
+### Step-4: create example input file and place fasta files under $DATA_DIR/input_examples/
 Create a CSV file containing the following lines and save it as $DATA_DIR/input_examples/input.1.csv
 ```
 isoform_ac,amino_acid_pos,amino_acid
@@ -56,13 +56,13 @@ P19827-2,516,N
 P19827-2,517,T
 ```
 
-###Step-5: run isoform mapper
+### Step-5: run isoform mapper
 Use the following command to test the isoform mapper
 ```
 $ docker run --rm -v $DATA_DIR:/data glygen/isoform-mapper:1.0.0 python run-isoform-mapper.py  -i /data/input_examples/input.1.csv -o /data/output/output.1.tsv
 ```
 
-###Step-6: check output file and (logs)
+### Step-6: check output file and (logs)
 Use the following command to test the isoform mapper
 ```
 $ ls -ltr $DATA_DIR/logs/
